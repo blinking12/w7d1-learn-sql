@@ -58,17 +58,16 @@ sum(price)
 
 
 How many total items did we sell?
-select count(*) from orders where quantity;
-count(*)  
-----------
-377
+select sum(quantity) from orders;
+2126
+
 
 
 How much was spent on books?
-select sum(items.price) from items inner join orders on items.id=orders.item_id where items.category like '%Book
-sum(items.price)
-----------------
-180356     
+elect sum(items.price*orders.quantity) from items inner join orders on items.id=orders.item_id where items.category like '%Book%';
+
+1081352
+
 
 
 Simulate buying an item by inserting a User for yourself and an Order for that User.
